@@ -322,6 +322,7 @@
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     font-weight: 600;
+    height: 50px;
 }
 .singlebds{
     margin-top: 25px;
@@ -330,10 +331,19 @@
 }
 .divprice{
     padding-top: 5px;
+    position: relative;
 }
+
 .pricebds{
     color: red;
     font-weight: 500;
+}
+.priceold{
+    position: absolute;
+    right: 0;
+    text-decoration: line-through;
+    color: #b5b5b5;
+    font-size: 13px;
 }
 .areabds{
     margin-left: 15px;
@@ -1568,4 +1578,98 @@
     .select-container {
         margin-top: 10px; /* Thiết lập margin-top */
     }
+}
+.listdmindex {
+    margin-top: 20px;
+    padding-top: 10px;
+}
+.topindex{
+    padding-top: 20px;
+}
+
+.media-29101 img {
+    aspect-ratio: 1 / 1;
+    width: 60% !important;
+    margin-left: 20%;
+    margin-top: 20%;
+    object-fit: cover;
+    margin-bottom: 20px;
+    border-radius: 50%;
+}
+
+.media-29101 h3 {
+    font-size: 0.8rem;
+    text-align: center;
+    font-weight: 600;
+    font-family: 'SVN-Gilroy';
+    color: #11006F;
+    text-transform: uppercase;
+    margin-top: 10px;
+}
+
+.media-29101 h3 a {
+    font-family: 'SVN-Gilroy';
+    color: #000;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+.divimgslide{
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    margin: auto;
+    border: 3px solid transparent;
+    border-radius: 100px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .5);
+    transition: all .25sease;
+    margin-top: 10px;
+}
+
+.owl-2-style .owl-nav {
+    display: none;
+}
+
+.owl-2-style .owl-dots {
+    text-align: center;
+    position: relative;
+    bottom: -30px;
+}
+
+.owl-2-style .owl-dots .owl-dot {
+    display: inline-block;
+}
+
+.owl-2-style .owl-dots .owl-dot span {
+    display: inline-block;
+    width: 15px;
+    height: 3px;
+    border-radius: 0px;
+    background: #cccccc;
+    -webkit-transition: 0.3s all cubic-bezier(0.32, 0.71, 0.53, 0.53);
+    -o-transition: 0.3s all cubic-bezier(0.32, 0.71, 0.53, 0.53);
+    transition: 0.3s all cubic-bezier(0.32, 0.71, 0.53, 0.53);
+    margin: 3px;
+}
+
+.owl-2-style .owl-dots .owl-dot.active span {
+    background: #007bff;
+}
+
+.owl-2-style .owl-dots .owl-dot:active,
+.owl-2-style .owl-dots .owl-dot:focus {
+    outline: none;
+}
+
+.lbtimkiemsp{
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 40px;
+}
+.tieudemonanchoban{
+    display: block;
+    text-align: center;
+    font-size: 17px;
+    font-weight: bold;
+    margin-top: 50px;
 }

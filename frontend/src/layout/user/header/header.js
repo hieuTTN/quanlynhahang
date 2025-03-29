@@ -61,7 +61,7 @@ return(
             {auth}
         </div>
         <div class="d-flexs">
-            <button onClick={()=>window.location.href='dangtin'} class="btndangtinmoi">Đăng tin</button>
+            <button onClick={()=>window.location.href='tel:0987123123'} class="btndangtinmoi">Liên hệ</button>
         </div>
         </div>
     </nav>
