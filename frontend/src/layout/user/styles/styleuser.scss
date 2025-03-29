@@ -1673,3 +1673,24 @@
     font-weight: bold;
     margin-top: 50px;
 }
+.imgbannerindex{
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+.spinner-border{
+    margin: auto;
+}
+.divcartheader{
+    position: relative;
+}
+.slcartheader{
+    position: absolute;
+    right: 0;
+    background-color: #de7728;
+    color: #fff;
+    padding: 5px;
+    line-height: 10px;
+    border-radius: 50%;
+    top: -5px;
+}

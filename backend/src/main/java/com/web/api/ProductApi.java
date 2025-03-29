@@ -98,4 +98,6 @@ public class ProductApi {
         Page<Product> result = productService.searchFull(search,pageable);
         return new ResponseEntity<>(result,HttpStatus.OK);
     }
+
+
 }

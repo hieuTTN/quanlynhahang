@@ -8,6 +8,7 @@ export const HeaderContext = createContext();
 
 var token = localStorage.getItem("token");
 function Header (){
+  var [numCart, setNumCart] = useState(0);
   const [categories, setCategories] = useState([]);
   useEffect(()=>{
     const getCategory = async() =>{
@@ -16,6 +17,19 @@ function Header (){
         setCategories(listCate)
     };
     getCategory();
+
+    const getNumCart = async() =>{
+        const response = await getMethod('/api/cart/user/count-cart');
+        if(response.status > 300){
+            setNumCart(0);
+            return;
+        }
+        var numc = await response.text();
+        setNumCart(numc);
+    };
+    if(token != null){
+        getNumCart();
+    }
 }, []);
 import('../styles/styleuser.scss');
 var auth = <><a href="regis" class="dangkydn dangkymenu">Đăng ký</a>
@@ -60,7 +74,11 @@ return(
         <div class="d-flexs">
             {auth}
         </div>
-        <div class="d-flexs">
+        <div class="d-flex">
+            <div className='divcartheader'>
+              <span id='soluongcart' className='slcartheader'>{numCart}</span>
+              <button onClick={()=>window.location.href='tel:0987123123'} class="btndangtinmoi">Menu</button>
+            </div>
             <button onClick={()=>window.location.href='tel:0987123123'} class="btndangtinmoi">Liên hệ</button>
         </div>
         </div>

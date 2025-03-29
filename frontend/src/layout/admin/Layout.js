@@ -135,6 +135,19 @@ function Header({ children }){
                         </li>
                     </ul>
                 </li>
+                <li className={isActive(["/admin/voucher", "/admin/addvoucher"])}>
+                    <a href="#colkhuyenmai" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle text-white text-decoration-none">
+                        <i class="fa fa-newspaper"></i> Khuyến mại
+                    </a>
+                    <ul class="collapse list-unstyleds" id="colkhuyenmai">
+                        <li class="nav-item">
+                            <a href="voucher" class="text-white text-decoration-none ps-4"><i class="fa fa-list"></i> Danh sách khuyến mại</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="addvoucher" class="text-white text-decoration-none ps-4"><i class="fa fa-plus"></i> Thêm khuyến mại</a>
+                        </li>
+                    </ul>
+                </li>
                 <li className={isActive(["/admin/category"])}>
                     <a href="category" class="text-white text-decoration-none">
                         <i class="fa fa-list"></i> Danh mục
@@ -145,7 +158,7 @@ function Header({ children }){
                         <i class="fa fa-table"></i> Quản lý bàn
                     </a>
                 </li>
-                <li className={isActive(["/admin/real-estate", "/admin/add-real-estate"])}>
+                <li className={isActive(["/admin/product", "/admin/addproducts"])}>
                     <a href="#dashboardSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle text-white text-decoration-none">
                         <i class="fa fa-home"></i> Món ăn
                     </a>

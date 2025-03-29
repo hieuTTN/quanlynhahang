@@ -126,21 +126,11 @@ public class ProductService {
 
     public Page<Product> searchFull(SearchDto search, Pageable pageable) {
         Page<Product> list = null;
-        if(search.getSearch() == null){
-            search.setSearch("");
+        if(search.getCategory().size() > 0){
+            list = productRepository.searchFull(search.getSmall(), search.getLarge(), search.getCategory(), pageable);
         }
-        if(search.getSmall() == null){
-            search.setSmall(0D);
-        }
-        if(search.getLarge() == null){
-            search.setLarge(100000000D);
-        }
-        search.setSearch("%"+search.getSearch()+"%");
-        if(search.getCategory() == null){
-            list = productRepository.searchFull(search.getSearch(), search.getSmall(), search.getLarge(), pageable);
-        }
-        else{
-            list = productRepository.searchFull(search.getSearch(), search.getSmall(), search.getLarge(), search.getCategory(), pageable);
+        if(search.getCategory().size() == 0){
+            list = productRepository.searchFull(search.getSmall(), search.getLarge(), pageable);
         }
         return list;
     }

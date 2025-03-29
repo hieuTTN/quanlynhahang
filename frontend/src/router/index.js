@@ -11,6 +11,8 @@ import AdminAddBlog from '../pages/admin/addblog'
 import AdminProduct from '../pages/admin/product'
 import AdminAddProduct from '../pages/admin/addproduct'
 import AdminTable from '../pages/admin/table'
+import AdminVoucher from '../pages/admin/voucher'
+import AdminAddVoucher from '../pages/admin/addvoucher'
 
 
 
@@ -59,6 +61,8 @@ const adminRoutes = [
     { path: "/admin/product", component: AdminProduct, layout: layoutAdmin },
     { path: "/admin/addproduct", component: AdminAddProduct, layout: layoutAdmin },
     { path: "/admin/table", component: AdminTable, layout: layoutAdmin },
+    { path: "/admin/voucher", component: AdminVoucher, layout: layoutAdmin },
+    { path: "/admin/addvoucher", component: AdminAddVoucher, layout: layoutAdmin },
 ];
 
 

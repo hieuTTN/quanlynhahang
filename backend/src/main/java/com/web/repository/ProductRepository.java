@@ -41,6 +41,13 @@ public interface ProductRepository extends JpaRepository<Product,Long> {
     @Query("select p from Product p where (p.name like ?1 or p.category.name like ?1) and p.price >= ?2 and p.price <= ?3 and p.category.id = ?4")
     public Page<Product> searchFull(String param, Double small, Double large, Long cate, Pageable pageable);
 
+    @Query("SELECT p FROM Product p WHERE p.price BETWEEN ?1 AND ?2 AND p.category.id IN ?3")
+    Page<Product> searchFull(Double small, Double large, List<Long> cate, Pageable pageable);
+
+    @Query("SELECT p FROM Product p WHERE p.price BETWEEN ?1 AND ?2")
+    Page<Product> searchFull(Double small, Double large,Pageable pageable);
+
+
     @Query(value = "select p.* from product p order by p.quantity_sold desc limit 5", nativeQuery = true)
     public List<Product> sanPhamBanChay();
 }

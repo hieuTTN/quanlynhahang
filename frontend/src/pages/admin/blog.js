@@ -20,8 +20,6 @@ const AdminBlog = ()=>{
             var response = await getMethod('/api/blog/public/findAll?size='+size+'&sort=id,desc&page='+0);
             var result = await response.json();
             setItems(result.content)
-            console.log(result.content);
-            
             setpageCount(result.totalPages)
             url = '/api/blog/public/findAll?size='+size+'&sort=id,desc&page='
         };

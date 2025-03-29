@@ -2,7 +2,7 @@ import Footer from '../../layout/user/footer/footer'
 import banner from '../../assest/images/banner.jpg'
 import banner1 from '../../assest/images/banner1.png'
 import banner2 from '../../assest/images/banner2.jpg'
-import {getMethod} from '../../services/request'
+import {getMethod, postMethod, postMethodPayload} from '../../services/request'
 import {formatMoney, formatPrice} from '../../services/money'
 import {formatDate} from '../../services/dateservice'
 import { useState, useEffect } from 'react'
@@ -19,7 +19,7 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import Select from 'react-select';
 
-var sizepro = 20
+var sizepro = 16
 var url = '';
 function Home(){
 
@@ -29,6 +29,9 @@ function Home(){
     const [itemCategories, setItemCategories] = useState([]);
     const [selectCategory, setSelectcategory] = useState([]);
     const [pageCount, setpageCount] = useState(0);
+    const [method, setMethod] = useState("GET");
+    const [payload, setPayload] = useState(null);
+    const [loading, setLoading] = useState(false);
     const settings = {
         dots: true, 
         infinite: true, 
@@ -79,27 +82,84 @@ function Home(){
         };
         getMonAn();
     }, []);
-  
+    
 
+        const searchFullMonAn = async() =>{
+            setLoading(true); 
+            var gia = document.getElementById("khoanggia").value.split("-")
+            const categoryIds = selectCategory.map(category => category.id);
+            var search = {
+                "small":gia[0],
+                "large":gia[1],
+                "category":categoryIds,
+            }
+            var response = await postMethodPayload('/api/product/public/search-full-san-pham?size='+sizepro+'&sort=id,desc'+'&page='+0,search);
+            var result = await response.json();
+            setpageCount(result.totalPages)
+            setProducts(result.content)
+            url = '/api/product/public/search-full-san-pham?size='+sizepro+'&sort=id,desc'+'&page='
+            setMethod("POST")
+            setPayload(search)
+            await new Promise(resolve => setTimeout(resolve, 500));
+            setLoading(false); 
+        };
 
     const handlePageClick = async (data)=>{
         var currentPage = data.selected
-        var response = await getMethod(url+currentPage)
+        var response = null;
+        if(method == "GET"){
+           response = await getMethod(url+currentPage)
+        }
+        if(method == "POST"){
+            response = await postMethodPayload(url+currentPage, payload)
+        }
         var result = await response.json();
         setProducts(result.content)
         setpageCount(result.totalPages)
     }
 
 
+
+    const addToCart = async (id) => {
+        const result = await postMethod('/api/cart/user/create?idproduct='+id);
+        if(result.status < 300){
+            toast.success("Thêm vào menu thành công");
+            const response = await getMethod('/api/cart/user/count-cart');
+            var numc = await response.text();
+            document.getElementById("soluongcart").innerHTML = numc
+        }
+        else{
+            toast.warning("Hãy đăng nhập");
+        }
+    };
+
     return(
         <>
             <div className='container topindex'>
+            <div id="carouselExampleControls" class="carousel slide bannerindex" data-bs-ride="carousel">
+                <div id="carouselindex">
+                    <div class="carousel-inner carousel-inner-index">
+                        <div class="carousel-item active">
+                            <a href=""><img src={banner} class="d-block w-100 imgbannerindex"/></a>
+                        </div>
+                        <div class="carousel-item">
+                            <a href=""><img src={banner1} class="d-block w-100 imgbannerindex"/></a>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                </button>
+            </div><br/>
                 <div className='row'>
                     <div className='col-sm-3'>
                         <span className='lbtimkiemsp'>Tìm kiếm món ăn</span>
                     </div>
                     <div className='col-sm-3'>
-                        <select className='form-control'>
+                        <select id='khoanggia' className='form-control'>
                             <option value="0-100000000">Tất cả mức giá</option>
                             <option value="0-149000">Dưới 150.000 đ</option>
                             <option value="150000-199000">150.000 - 200.000 đ</option>
@@ -115,7 +175,7 @@ function Home(){
                                     getOptionValue={(option) => option.id} /> 
                     </div>
                     <div className='col-sm-2'>
-                        <button className='form-control'><i className='fa fa-filter'></i> Lọc</button>
+                        <button onClick={()=>searchFullMonAn()} className='form-control'><i className='fa fa-filter'></i> Lọc</button>
                     </div>
                 </div>
                 <div className="listdmindex owl-2-style">
@@ -147,7 +207,8 @@ function Home(){
                                 <div class="divprice">
                                     <span class="pricebds">{formatMoney(item.price)}</span>
                                     <span class="priceold">{item.oldPrice == null?'':formatMoney(item.oldPrice)}</span>
-                                </div>
+                                </div><br/>
+                                <button onClick={()=>addToCart(item.id)} className='btn btn-outline-primary form-control'>Thêm vào menu</button>
                             </div>
                         </div>
                     </div> 
@@ -194,6 +255,17 @@ function Home(){
                     </div>
                 </div>
             </div>
+
+            {loading && (
+                <div className="modal d-block" tabIndex="-1" style={{ background: "rgba(0, 0, 0, 0.5)" }}>
+                <div className="modal-dialog modal-dialog-centered">
+                    <div className="modal-content bg-transparent border-0 text-center">
+                    <div className="spinner-border text-light" role="status" style={{ width: "3rem", height: "3rem" }}></div>
+                    <p className="text-light mt-3">Đang tải...</p>
+                    </div>
+                </div>
+                </div>
+            )}
         </>
     );
 }

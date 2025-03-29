@@ -57,9 +57,9 @@ function TinTuc(){
         <div class="contentmains contentbaiviet">
         <div class="container">
             <div class="headerbaiviet">
-                <h1 class="batdsnoibat">Tin tức bất động sản mới nhất</h1>
-                <span class="motattheader">Thông tin mới, đầy đủ, hấp dẫn về thị trường bất động sản Việt Nam thông qua dữ liệu lớn về giá,<br/> 
-                    giao dịch, nguồn cung - cầu và khảo sát thực tế của đội ngũ phóng viên, biên tập của Batdongsan.com.vn.</span>
+                <h1 class="batdsnoibat">Tin tức ẩm thực mới nhất</h1>
+                <span class="motattheader">Thông tin mới, đầy đủ, hấp dẫn về thị trường ẩm thực Việt Nam <br/> 
+                    với đầy đủ các món ăn trong nước với ngoài nước</span>
             </div>
             <div class="row noidungdsbv">
                 <div class="col-sm-8">
