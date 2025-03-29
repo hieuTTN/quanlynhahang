@@ -1,0 +1,1571 @@
+
+@keyframes barWidth {
+    0% {
+        width: 0%;
+    }
+    25% {
+        width: 50%;
+    }
+    50% {
+        width: 100%;
+    }
+    75% {
+        width: 50%;
+    }
+    100% {
+        width: 0%;
+    }
+}
+
+@keyframes barWidth2 {
+    0% {
+        width: 0%;
+    }
+    50% {
+        width: 50%;
+    }
+    100% {
+        width: 100%;
+    }
+}
+
+#loading {
+    margin-top: 20px;
+    height: 4px;
+    width: 100%;
+    display: none;
+}
+
+.bar {
+    position: relative;
+    width: 0%;
+    height: 100%;
+    margin: 0 auto;
+    animation: barWidth;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+.bar1 {
+    animation-delay: 0s;
+    background: #02a09a;
+    top: 0;
+    z-index: 1;
+}
+
+
+
+
+
+.chat-header {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+#listchat {
+    font-size: 13px;
+    display: flex;
+    flex-direction: column;
+}
+.mychat{
+    background-color: #0084ff;
+    color: #fff;
+    max-width: 70%;
+    padding: 3px 7px;
+    border-radius: 10px;
+    display: inline-block;
+    align-self: flex-end;
+}
+.adminchat{
+    background-color: #f0f0f0;
+    max-width: 70%;
+    padding: 3px 7px;
+    border-radius: 10px;
+    display: inline-block;
+    align-self: flex-start;
+}
+
+
+
+
+
+
+
+.header{
+    position: fixed;
+    z-index: 1000;
+    width: 100%;
+    background-color: #fff;
+    min-height: 80px;
+    box-shadow: 0 4px 2px -2px #ededed;
+    padding-left: 20px;
+    padding-right: 20px;
+    line-height: 40px;
+}
+.imglogomenu{
+    width: 150px;
+}
+.listitemmenu{
+    padding-left: 50px !important;
+}
+.btndangtinmoi{
+    border: 1px solid #ccc;
+    border-radius:  5px;
+    background:none;
+    font-weight: 500;
+    margin-left: 20px;
+}
+.listitemmenu .menucha{
+    color: #000;
+    font-weight: 500;
+}
+.dangkydn{
+    color: #000;
+    font-weight: 500;
+    text-decoration: none;
+    padding-left: 5px;
+}
+.dangkymenu{
+    padding-right: 10px;
+    border-right: 1px solid #ccc;
+}
+.contentmain{
+    padding-top: 80px;
+}
+.listitemtk li{
+    height: 30px;
+}
+.listitemtk li a{
+    line-height: 30px;
+}
+.listitemtk li a i{
+    font-size: 0.9rem;
+}
+.kytuviettat{
+    background-color: #ffeceb;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 50%;
+}
+.formlienhe{
+    position: relative;
+}
+.sendem{
+    position: absolute;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #E03C31;
+    top: 0;
+    bottom: 0;
+    right: 0px;
+    border: 0px;
+    width: 40px;
+    color: #fff;
+    border-radius: 8px;
+}
+.text-reset{
+    text-decoration: none;
+}
+.searchmain{
+    margin: auto;
+    background-color: #666666;
+    padding: 15px;
+    margin-top: 30px;
+    border-radius: 5px;
+}
+.formsearch{
+    display: block;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    border: 1px solid #ced4da;
+    background: none;
+    border: none;
+}
+.formsearch:focus{
+    outline: none;
+}
+.searchmain-top{
+    background-color: #f2f2f2;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 5px;
+}
+.iconsearchs{
+    float: right;
+    line-height: 40px;
+    font-size: 22px;
+}
+.btnsearchtop{
+    width: 100px;
+}
+.formsearchborder{
+    padding-right: 15px;
+    border-right: 1px solid #c2c2c2;
+}
+.searchmain-bottom{
+    margin-top: 15px;
+}
+.selectsearch{
+    display: block;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    border: 1px solid #ced4da;
+    background: none;
+    border-radius: 5px;
+    color: #fff;
+    height: 40px;
+}
+.selectsearch option{
+    color: #000;
+}
+.blogindex{
+    margin-top: 100px;
+}
+.topblogindex{
+    border-bottom: 1px solid #dedede;
+    display: flex;
+    position: relative;
+}
+.xemthemblog{
+    position: absolute;
+    right: 0;
+    color: #E03C31;
+    text-decoration: none;
+    font-size: 0.9rem;
+    top: 10px;
+}
+.listblogindex{
+    padding-top: 20px;
+}
+.blogpriimage{
+    width: 100%;
+    border-radius: 5px;
+}
+.titlepriindex{
+    color: #000;
+    text-decoration: none;
+    display: block;
+    margin-top: 15px;
+    font-size: 25px;
+    font-weight: bold;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* number of lines to show */
+            line-clamp: 2; 
+    -webkit-box-orient: vertical;
+}
+.singleblogindex{
+    border-bottom: 1px solid #dedede;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+.singleblogindex a{
+    color: #000;
+    text-decoration: none;
+    font-family: "Roboto Regular",Roboto,Arial !important;
+    font-size: 16px;
+    line-height: 26px;
+    font-weight: normal !important;
+    color: #2C2C2C;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    font-weight: 600;
+}
+.divbdsindex{
+    background-color: #fafafa;
+    padding-top: 30px;
+    margin-top: 100px;
+    padding-bottom: 100px;
+}
+.imgdbs{
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+.container{
+    padding-left: 100px !important;
+    padding-right: 100px !important;
+}
+.contentbds{
+    padding: 15px;
+    background-color: #fff;
+}
+.titlebdssingle{
+    color: #2C2C2C;
+    text-decoration: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    font-weight: 600;
+}
+.singlebds{
+    margin-top: 25px;
+    -webkit-box-shadow: 0 0 10px #c7c7c7;
+        box-shadow: 0 0 10px #c7c7c7;
+}
+.divprice{
+    padding-top: 5px;
+}
+.pricebds{
+    color: red;
+    font-weight: 500;
+}
+.areabds{
+    margin-left: 15px;
+}
+.diachibds{
+    display: block;
+    margin-top: 3px;
+    color: #505050;
+    font-size: 13px;
+    height: 25px;
+}
+.divtimebds{
+    margin-top: 20px;
+    position: relative;
+}
+.timedangbds{
+    color: #505050;
+}
+.btnyeuthich{
+    position: absolute;
+    right: 0;
+    background: none;
+    border: 1px solid #bababa;
+    border-radius: 5px;
+}
+.btnyeuthich i {
+    color: #9c9c9c;
+}
+.btnyeuthich .active {
+    color: #E03C31;
+}
+.xemthembds{
+    margin-top: 50px;
+    position: relative;
+}
+.btnxemthem{
+    position: absolute;
+    width: 150px;
+    left: 0;
+    right: 0;
+    margin-left: auto; 
+    margin-right: auto; 
+    border: 1px solid #ccc;
+    padding: 13px 15px;
+    border-radius: 8px;
+    background-color: #fff;
+}
+.btnempty .active{
+    color: red;
+}
+
+
+.nhotaikhoandiv{
+    margin-top: 20px;
+    position: relative;
+}
+.quenpass{
+    position: absolute;
+    right: 0;
+    color: red;
+    text-decoration: none;
+}
+.spdangky{
+    margin-top: 50px;
+    text-align: center;
+}
+.spdangky a{
+    color: red;
+    text-decoration: none;
+}
+.ttlienhe{
+    border: 1px solid #cccccc;
+    text-align: center;
+    padding: 0px 10px 20px 10px;
+}
+.tenviettat{
+    background-color: #FFECEB;
+    width: 50px;
+    height: 50px;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+    text-align: center;
+    line-height: 50px;
+    border-radius: 50%;
+    font-weight: bold;
+
+}
+.containerdetail{
+    margin-top: 30px;
+}
+.spdangboi{
+    font-family: "Roboto Regular",Roboto,Arial !important;
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: normal !important;
+    color: #999;
+    display: block;
+    margin-top: 8px;
+}
+.nguoidang{
+    font-family: "Lexend Medium",Roboto,Arial !important;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: -.2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center;
+    color: #2C2C2C;
+    margin-top: 8px;
+    font-weight: bold;
+    display: block;
+    margin-top: 5px;
+}
+.btnsdtdetail{
+    color: #fff;
+    background: #009BA1;
+    border: 1px solid #009BA1;
+    font-family: "Lexend Medium",Roboto,Arial !important;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: bold;
+    letter-spacing: -.2px;
+    padding: 13px 15px;
+    border-radius: 8px;
+    margin-top: 20px;
+    width: 100%;
+}
+.zaloicon{
+    width: 20px;
+    margin-right: 10px;
+}
+.btnchatzalo{
+    color: #000;
+    background: #fff;
+    border: 1px solid #009BA1;
+    font-family: "Lexend Medium",Roboto,Arial !important;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: bold;
+    letter-spacing: -.2px;
+    padding: 13px 15px;
+    border-radius: 8px;
+    margin-top: 20px;
+    width: 100%;
+}
+.imgdetaills{
+    width: 100%;
+    height: 450px;
+    object-fit: cover;
+}
+.diachibdsdetail{
+    margin-top: 10px;
+}
+.diachibdsdetail span{
+    font-family: "Roboto Regular",Roboto,Arial !important;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: normal !important;
+    color: #999;
+}
+.tieudedetail{
+    margin-top: 10px;
+    color: #2C2C2C;
+}
+.tenduandetail{
+    font-family: "Roboto Regular",Roboto,Arial !important;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: normal !important;
+    color: #2C2C2C;
+    display: block;
+    margin-top: 8px;
+}
+.btnempty{
+    border: none;
+    background: none;
+}
+.btnempty:hover{
+    background: #e6e6e6;
+    border-radius: 8px;
+}
+.thongtinchitiet{
+    margin-top: 20px !important;
+    border-top: 1px solid #e8e6e6;
+    border-bottom: 1px solid #e8e6e6;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.righttd{
+    width: 200px !important;
+}
+.tdshare{
+    float: right;
+}
+.tablechitiettt tr{
+    line-height: 25px;
+   min-height: 25px;
+   height: 25px;
+}
+.thongtinchitiet-content{
+    width: 200px;
+    height: 100%;
+}
+.thongtinchitiet-content span{
+    display: block;
+}
+.thongtinchitiet-right button{
+    float: right;
+    margin-left: 15px;
+    font-size: 22px;
+}
+.heartdetail{
+    color: #9c9c9c;
+}
+.heartactive{
+    color: #E03C31;
+}
+.lbmucgia{
+    font-family: "Roboto Regular",Roboto,Arial !important;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: normal !important;
+    color: #999;
+    display: block;
+}
+.lbgia{
+    font-family: "Roboto Medium",Roboto,Arial !important;
+    font-size: 18px;
+    line-height: 28px;
+    font-weight: 600 !important;
+    color: #2C2C2C;
+    margin-top: 4px;
+    display: block;
+}
+.lbgiamv{
+    font-family: "Roboto Regular",Roboto,Arial !important;
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: normal !important;
+    color: #505050;
+    display: block;
+}
+.ttmota{
+    font-family: "Lexend Medium",Roboto,Arial !important;
+    font-size: 18px;
+    line-height: 28px;
+    font-weight: bold !important;
+    letter-spacing: -.2px;
+    color: #2C2C2C;
+    display: block;
+    margin-top: 50px;
+}
+.theadgray{
+    background: #f5f5f5;
+    height: 40px !important;
+}
+.tableduanlk{
+    margin-top: 50px;
+}
+.linkduanlk{
+    color: #2C2C2C;
+    font-family: "Roboto Regular",Roboto,Arial !important;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: normal !important;
+    text-decoration: none;
+}
+.giatienlk{
+    color: #999;
+    font-weight: 500;
+}
+.contentds{
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    height: 300px;
+}
+.contentdanhsach{
+    background-color: #f5f5f5;
+    padding-bottom: 100px;
+}
+.useravatards{
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.containerds{
+    background-color: #fff;
+    margin-top: -70px;
+    border-radius: 15px;
+    margin-bottom: 100px;
+    padding-bottom: 100px;
+}
+.rowthongtin{
+    padding-bottom: 50px;
+    padding-top: 30px;
+    border-bottom: 1px solid #adadad;
+}
+.tenuserds{
+    font-size: 25px;
+    font-weight: bold;
+    margin-left: 15px;
+}
+.sharedsdiv{
+    position: relative;
+    height: 100%;
+}
+.sharedsdiv button{
+    float: right;
+    margin-top: 45px;
+    height: 40px;
+    border-radius: 8px;
+    margin-left: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.btnshareds{
+    background:none;
+    border: 1px solid #bfbfbf;
+}
+.btnphoneds{
+    border: none;
+    background-color: #009BA1;
+    color: #fff;
+}
+.dstinban{
+    margin-top: 25px;
+    font-weight: bold;
+}
+.modalphanhoi input {
+    margin-top: 15px;
+}
+.lbphanhoi{
+    margin-top: 20px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+.modalphanhoi{
+    height: 400px;
+    overflow: scroll;
+}
+
+.selectsearchmultiple{
+    display: block;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    border: 1px solid #ced4da !important;
+    background: none !important;
+    border-radius: 5px;
+    color: #fff !important;
+    height: 40px !important;
+}
+.filter-option-inner-inner{
+    color: #fff !important;
+}
+.bootstrap-select{
+    color: #fff !important;
+}
+.btn-default{
+    color: #fff !important;
+}
+.divbdstimkiem{
+    padding-top: 10px;
+    margin-top: 10px;
+    padding-bottom: 100px;
+}
+.soluongbdssp{
+    font-family: "Roboto Regular",Roboto,Arial !important;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: normal !important;
+    color: #2C2C2C;
+    display: inline-block;
+}
+.filterdstimkiem{
+    position: relative;
+}
+.divsortgia{
+    width: 200px;
+    position: absolute;
+    right: 220px;
+    top: 0px;
+}
+.divdaxacnhan{
+    width: 150px;
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    padding: 0.375rem 0.75rem;
+    cursor: pointer;
+}
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 35px;
+    height: 20px;
+    top: 3px;
+  }
+  .switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+    width: 100%;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 12px;
+    width: 12px;
+    left: 5px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  input:checked + .slider {
+    background-color: #00960f;
+  }
+  
+  input:focus + .slider {
+    box-shadow: 0 0 1px #00960f;
+  }
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(16px);
+    -ms-transform: translateX(16px);
+    transform: translateX(16px);
+  }
+  
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: 20px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }  
+.tieudext{
+    font-family: "Roboto Medium",Roboto,Arial !important;
+    font-size: 14px;
+    line-height: 0px;
+    color: #a8a8a8;
+    margin-right: 5px;
+    // position: absolute;
+    // right: 17px;
+    // top: 17px;
+}
+.listbdstimkiem{
+    margin-top: 50px;
+}
+.singledbstimkiem{
+    -webkit-box-shadow: 0 0 5px #e6e6e6;
+        box-shadow: 0 0 5px #e6e6e6;
+    border-radius: 5px;
+    padding-bottom: 30px;
+    margin-top: 40px;
+}
+.bdsimagelarge{
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+}
+.bdsimgsmall{
+    width: 100%;
+}
+.nopaddingright{
+    padding-right: 1px !important;
+    padding-top: 1px !important;
+}
+.nopaddingleft{
+    padding-left: 1px !important;
+    padding-top: 1px !important;
+}
+.smallfirst{
+    height: 130px;
+    object-fit: cover;
+}
+.smallsv{
+    height: 130px;
+    object-fit: cover;
+}
+.nopaddingbottom{
+    padding-bottom: 1px;
+}
+.divslanh{
+    position: relative;
+}
+.soluonganh{
+    color: #fff;
+    font-weight: bold;
+    position: absolute;
+    bottom: 0;
+    right: 15px;
+    background-color: rgba(15, 15, 15, 0.5);
+}
+.contentbdstk{
+    padding: 10px 20px;
+}
+.tieudetk{
+    font-family: "Lexend Medium",Roboto,Arial !important;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: bold !important;
+    letter-spacing: -.2px;
+    color: #2C2C2C;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+.motatkbds{
+    font-family: "Roboto Regular",Roboto,Arial !important;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: normal !important;
+    color: #505050;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden !important;
+    -webkit-line-clamp: 2;
+    margin-top: 5px;
+}
+.tienichtk{
+    font-family: "Roboto Regular",Roboto,Arial !important;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: normal !important;
+    color: #505050;
+    line-height: 26px;
+    margin-left: 15px;
+}
+.btnphonetk{
+    color: #fff;
+    background: #009BA1;
+    border: 1px solid #009BA1;
+    font-family: "Lexend Medium",Roboto,Arial !important;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: bold;
+    letter-spacing: -.2px;
+    padding: 5px 15px;
+    border-radius: 8px;
+    margin-left: 20px;
+    position: absolute;
+    right: 100px;
+}
+.iconyttk{
+    right: 20px !important;
+}
+.usertkiem{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-left: 20px;
+}
+.tenusertk{
+    font-size: 13px;
+    font-weight: bold;
+}
+.divtienich{
+    position: relative;
+}
+.ngaydangtk{
+    position: absolute;
+    right: 0;
+}
+.locnhanhtk{
+    border: 1px solid #e0e0e0;
+    padding: 20px 20px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+.locnhanhtk a{
+    display: block;
+    color: #000;
+    text-decoration: none;
+    margin-top: 8px;
+}
+.tieudeloc{
+    color: #2C2C2C;
+    font-weight: bold;
+}
+.contentmain-timkiem{
+    padding-left: 130px !important;
+    padding-right: 130px !important;
+}
+.headerbaiviet{
+    margin-top: 70px;
+}
+.batdsnoibat{
+    line-height: 44px;
+    text-align: center;
+}
+.motattheader{
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    font-family: Roboto,Helvetica Neue,Helvetica,Arial,sans-serif;
+}
+.noidungdsbv{
+    padding-top: 50px;
+}
+.baivietchinh{
+    position: relative;
+}
+.imgblogchinh{
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+}
+.noidungbvchinh{
+    position: absolute;
+    height: 400px;
+    top:0px;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    color: #fff;
+    padding-left: 30px;
+}
+.divndchinh{
+    position: absolute;
+    bottom: 0;
+    padding-bottom: 40px;
+}
+.motapribaiviet{
+    font-weight: bold;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* number of lines to show */
+            line-clamp: 2; 
+    -webkit-box-orient: vertical;
+}
+.anhbaiviet{
+    width: 100%;
+    border-radius: 5px;
+}
+.listbaivietbv{
+    margin-top: 30px;
+}
+.timebaiviet{
+    display: block;
+    font-family: Roboto,Helvetica Neue,Helvetica,Arial,sans-serif;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 18px;
+    color: #999;
+}
+.tieudebaiviet{
+    display: block;
+    color: #000;
+    text-decoration: none;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 18px;
+    font-weight: 500;
+}
+.motabaiviet{
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    font-family: Roboto,Helvetica Neue,Helvetica,Arial,sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+}
+.userdangbaiviet{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.spuserdangbv{
+    font-size: 13px;
+    display: block;
+    margin-top: 5px;
+}
+.singlebaiviet{
+    margin-top: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #c4c4c4;
+}
+.ctuserdangtin{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.nguoidangtin{
+    position: relative;
+    margin-top: 40px;
+}
+.dangboi{
+    position: absolute;
+    left: 60px;
+    top: 0;
+}
+.userdangbl{
+    font-weight: bold;
+}
+.motabvdetail{
+    font-weight: bold;
+    color: #2c2c2c;
+}
+#noidungbaiviet{
+    margin-top: 30px;
+}
+.p20 {
+    float: left;
+    width: 20%;
+}
+.p80 {
+    float: left;
+    width: 80%;
+}
+.collapse li{
+    display: block !important;
+}
+.navbarleft{
+    box-shadow: 4px 0 5px -2px #ebebeb;
+    min-height: 80vh;
+}
+.navbarleft a{
+    color: #2C2C2C !important;
+}
+.navbarleft .collapse{
+    list-style: none;
+    margin: 0;
+
+}
+.navbarleft .collapse li{
+    list-style: none;
+    margin: 0;
+}
+.thongtintaikhoan{
+    color: #000;
+    padding-top:0px;
+    margin-bottom: 10px;
+}
+.usertaikhoan{
+    aspect-ratio : 1 / 1;
+    width: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.usernametaikhoan{
+    font-size: 16px;
+    font-weight: bold;
+    margin-left: 10px;
+}
+.chitiettttaikhoan{
+    margin-top: 20px;
+    background-color: #f2f2f2;
+    padding: 10px;
+    border-radius: 8px;
+    padding-bottom: 20px;
+}
+.sodutk{
+    font-size: 15px;
+    display: block;
+    margin-top: 5px;
+}
+.tongsodu{
+    font-weight: 500;
+    float: right;
+}
+.divctnavbar{
+    background-color: red;
+    padding: 10px !important;
+}
+.btnnaptien{
+    width: 100%;
+    border: 1px solid red;
+    margin-top: 30px;
+    border-radius: 5px;
+    color: red;
+    height: 30px;
+    background-color: #fff;
+}
+.contentright{
+    padding: 0px 20px 40px 30px;
+}
+.anhphongqltin{
+    width: 100px;
+}
+.ghichuql{
+    background-color: #f8d7da;
+    padding: 10px;
+}
+.headcontent{
+    margin-bottom: 30px;
+    padding-top: 15px;
+}
+.lbform{
+    margin-bottom: 5px;
+}
+.tox-notifications-container{
+    display: none !important;
+}
+.tox-notification{
+    display: none !important;
+}
+.contentright label{
+    margin-bottom: 5px;
+    margin-top: 10px;
+}
+.btnxoaanhpreview{
+    background-color: #fff;
+    border: none;
+    -webkit-box-shadow: 0 0 10px gray;
+          box-shadow: 0 0 10px gray;
+    font-size: 14px;
+    font-weight: 400;
+  }
+  .imgspre{
+    -webkit-box-shadow: 0 0 10px gray;
+          box-shadow: 0 0 10px gray;
+  }
+  .choose-image{
+	width: 100%;
+	height: 200px;
+	background-color: #fff;
+  border: 2px dashed #bbb;
+	cursor: pointer;
+}
+.imgcsd{
+  width: 80px;
+}
+.choose-image p{
+	margin: auto;
+	text-align: center;
+}
+.upload-submit{
+	width: 100%;
+}
+#camera{
+	margin-top: 60px;
+  width: 90px;
+}
+.pointer{
+    color: blue;
+    text-decoration: none;
+    cursor: pointer;
+}
+.huongdanimg{
+    margin-top: 15px;
+    width: 100%;
+}
+.modalbodyscrol{
+    height: 100vh;
+    overflow: scroll;
+}
+.anhdaidienupdate{
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  .btnuploadavatar{
+    width: 130px;
+  }
+  .btntieptuc{
+    margin-top: 20px;
+    width: 50%;
+  }
+
+  @keyframes barWidth {
+    0%   {width: 0%;}
+    25%  {width: 50%;}
+    50%  {width: 100%;}
+    75%  {width: 50%;}
+    100% {width: 0%;}
+  }
+  @keyframes barWidth2 {
+    0%   {width: 0%;}
+    50%  {width: 50%;}
+    100% {width: 100%;}
+  }
+  #loading {
+    margin-top: 20px;
+    height: 4px;
+    width: 100%;
+    display: none;
+  }
+  
+  .bar {
+    position: relative;
+    width: 0%;
+    height: 100%;
+    margin: 0 auto;
+    animation: barWidth;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+  }
+  
+  .bar1 {
+    animation-delay: 0s;
+    background: #02a09a;
+    top: 0;
+    z-index: 1;
+  }
+.thtienich{
+    font-weight: 600;
+}
+.icontienich{
+    margin-right: 15px;
+}
+.daxacthucsp{
+    color: green;
+    font-size: 12px !important;
+    background-color: #b4dec0;
+    padding: 2px;
+    border-radius: 4px;
+}
+.daxacthucdt{
+    color: green;
+    font-size: 14px !important;
+    background-color: #b4dec0;
+    padding: 4px;
+    border-radius: 4px;
+}
+.iconsmall{
+    font-size: 10px;
+}
+
+#thatbai{
+    text-align: center;margin-top: 15px; display: none;
+}
+#thatbai p{
+    margin-top: 15px;
+}
+#thatbai h3{
+    font-size: 25px; font-weight: bold;
+}
+#thatbai a{
+    margin-top: 15px;
+}
+
+#thanhcong{
+    text-align: center;margin-top: 15px;
+}
+#thanhcong p{
+    margin-top: 15px;
+}
+#thanhcong h3{
+    font-size: 25px; font-weight: bold;
+}
+#thanhcong a{
+    margin-top: 15px;
+}
+
+.btntable{
+    background-color: #007bff !important;
+    width: 100%;
+}
+
+@keyframes barWidth {
+    0%   {width: 0%;}
+    25%  {width: 50%;}
+    50%  {width: 100%;}
+    75%  {width: 50%;}
+    100% {width: 0%;}
+  }
+  @keyframes barWidth2 {
+    0%   {width: 0%;}
+    50%  {width: 50%;}
+    100% {width: 100%;}
+  }
+  #loading {
+    margin-top: 20px;
+    height: 4px;
+    width: 100%;
+    display: none;
+  }
+  
+  .bar {
+    position: relative;
+    width: 0%;
+    height: 100%;
+    margin: 0 auto;
+    animation: barWidth;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+  }
+  
+  .bar1 {
+    animation-delay: 0s;
+    background: #02a09a;
+    top: 0;
+    z-index: 1;
+  }
+.toptttk{
+    position: relative;
+}
+.toptttk i{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    cursor: pointer;
+}
+.hiddensidebar{
+    display: none !important;
+}
+.imgtable{
+    width: 100px;
+}
+.edit-btn, .delete-btn {
+    padding: 5px 10px;
+    margin-right: 5px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    text-decoration: none;
+}
+
+.edit-btn {
+    background-color: #f39c12;
+    color: white;
+}
+
+.delete-btn {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.sticcol{
+    min-width: 100px !important;
+}
+.custom-radio-btn {
+    position: relative;
+    display: inline-block;
+    margin-right: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  
+  .custom-radio-btn input {
+    display: none;
+  }
+  
+  .custom-radio-btn .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+    color: white;
+    background-color: green;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 12px;
+  }
+  
+  .custom-radio-btn.active .checkmark {
+    display: inline-block;
+  }
+  
+  .custom-radio-btn.active {
+    background-color: #007bff;
+    color: white;
+  }
+.image-upload{
+    width: 100%;
+    height: 80px;
+    object-fit: cover;
+    margin-top: 10px;
+}
+.disnone{
+    display: none;
+}
+
+
+
+#listuserchat{
+    // height: 200px;
+    max-height: calc(100% - 80px);
+    overflow: scroll;
+}
+
+.imgavatarchat{
+    aspect-ratio: 1 / 1;
+    width: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.col45{
+    width: 40px !important;
+}
+.trhoverchat:hover{
+    background-color: #e8e8e8;
+    border-radius: 8px;
+}
+.timechat{
+    color: gray;
+    font-size: 12px;
+    display: block;
+}
+.header-chat-admin{
+    background-color: #bdbdbd;
+    margin-top: 10px;
+    background-color: gray !important;
+    border-radius: 0px !important;
+    color: #fff !important;
+}
+.mainchatadmin{
+    position: relative;
+    height: calc(100% - 100px);
+    margin-bottom: 0px;
+}
+.contentchatadmin{
+    height: calc(80vh - 100px);
+    padding-left: 30px;
+    padding-top: 10px;
+    padding-right: 30px;
+    border: 1px solid #d1d1d1;
+    border-top: 0px;
+    padding-bottom: 70px;
+    overflow-y: hidden;
+}
+.chat-area-footer{
+    position: absolute;
+    width: 100%;
+    bottom: -10px;
+    background-color: #fff;
+}
+.inputchatadmin{
+    width: 80%;
+    float: left;
+    border-radius: 0px;
+    padding: 3px 10px;
+    height: 40px;
+    border-top: 1px solid #d1d1d1;
+    border-left: 1px solid #d1d1d1;
+    border-right: 1px solid #d1d1d1;
+    border-bottom: none;
+}
+.imgchatbtnadmin{
+    width: 8%;
+    margin-left: 2%;
+    cursor: pointer;
+    font-size: 22px;
+}
+.btn-send-message{
+    width: 8%;
+    margin-left: 2%;
+    height: 40px;
+    border: 1px solid #d1d1d1;
+    border-radius: 5px;
+}
+#listchatadmin {
+    font-size: 13px;
+    display: flex;
+    flex-direction: column;
+}
+.activetrhoverchat{
+    background-color: #e8e8e8;
+    border-radius: 8px;
+}
+#listchatadmin{
+    overflow-y: scroll;
+}
+.centerchatstaff{
+    height: 50px;
+}
+.mychatimg{
+    width: 100px;
+    display: inline-block;
+    align-self: flex-end;
+    margin-top: 20px;
+}
+.adminimg{
+    width: 100px;
+    display: inline-block;
+    align-self: flex-start;
+    margin-top: 20px;
+}
+.hidden{
+    visibility: hidden;
+}
+
+.activetrhoverchat{
+    background-color: #e8e8e8;
+    border-radius: 8px;
+}
+#listuserchat tr{
+    height: 30px;
+}
+@media (max-width: 768px) {
+    .custom-container-search {
+        width: 100% !important;  /* Đặt độ rộng 100% khi trên màn hình điện thoại */
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+    }
+    .containercustom{
+        width: 100% !important;  /* Đặt độ rộng 100% khi trên màn hình điện thoại */
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+    }
+    .nopaddingleft{
+        display: none;
+    }
+    .filterdstimkiem .infiltertimkiem{
+        margin-top: 15px;
+    }
+    .containerdetail{
+        width: 100% !important;  /* Đặt độ rộng 100% khi trên màn hình điện thoại */
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+        margin-top: 0px;
+    }
+    .custom-container-search .selectsearch {
+        margin-top: 10px !important;
+    }
+    .select-container {
+        margin-top: 10px; /* Thiết lập margin-top */
+    }
+}
