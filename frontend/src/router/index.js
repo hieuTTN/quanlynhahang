@@ -31,6 +31,8 @@ import taikhoan from '../pages/user/taikhoan'
 import DoiMatKhau from '../pages/user/doimatkhau'
 import ThanhCong from '../pages/user/thanhcong'
 import PublicCheckout from '../pages/user/checkout'
+import PublicPayment from '../pages/user/payment'
+import LichSuDat from '../pages/user/lichsudat'
 
 
 
@@ -45,12 +47,14 @@ const publicRoutes = [
     { path: "/tin-tuc", component: TinTuc },
     { path: "/chitietbaiviet", component: ChiTietBaiViet },
     { path: "/checkout", component: PublicCheckout },
+    { path: "/payment", component: PublicPayment },
 ];
 
 const userRoutes = [
     { path: "/doimatkhau", component: DoiMatKhau, layout:AccountLayout },
     { path: "/thanhcong", component: ThanhCong, layout:AccountLayout },
     { path: "/taikhoan", component: taikhoan, layout:AccountLayout },
+    { path: "/lichsudat", component: LichSuDat, layout:AccountLayout },
 ];
 
 

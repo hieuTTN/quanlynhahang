@@ -27,11 +27,4 @@ public class HistoryPay {
     private Date createdDate;
 
     private Time createdTime;
-
-    @Enumerated(EnumType.STRING)
-    private PayType payType;
-
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
 }

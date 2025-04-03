@@ -70,7 +70,7 @@ function Header (){
                   Tài khoản của bạn
               </a>
               <ul class="dropdown-menu listitemtk" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="tincuatoi"><i class="fa fa-list"></i> Lịch sử đặt</a></li>
+                  <li><a class="dropdown-item" href="lichsudat"><i class="fa fa-list"></i> Lịch sử đặt</a></li>
                   <li><a class="dropdown-item" href="taikhoan"><i class="fa fa-user"></i> Thay đổi thông tin cá nhân</a></li>
                   <li><a class="dropdown-item" href="doimatkhau"><i class="fa fa-key"></i> Đổi mật khẩu</a></li>
                   <div class="dropdown-divider"></div>
@@ -139,7 +139,7 @@ function Header (){
                                   return <tr>
                                       <td>
                                           <div class="d-flex align-items-center">
-                                              <img src={item.product.imageBanner} alt="Túi xách" class="me-2"/>
+                                              <img src={item.product.imageBanner} class="me-2"/>
                                               <span>{item.product.name}</span>
                                           </div>
                                       </td>

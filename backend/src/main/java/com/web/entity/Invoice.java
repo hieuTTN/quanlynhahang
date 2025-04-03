@@ -30,6 +30,8 @@ public class Invoice {
 
     private Double totalAmount;
 
+    private Double costPlus;
+
     private String fullName;
 
     private String phone;
@@ -43,4 +45,14 @@ public class Invoice {
     @JoinColumn(name = "voucher_id")
     private Voucher voucher;
 
+    @ManyToOne
+    private User user;
+
+    @OneToMany(mappedBy = "invoice", cascade = CascadeType.REMOVE)
+    @JsonManagedReference
+    private List<InvoiceDetail> invoiceDetails;
+
+    @OneToMany(mappedBy = "invoice", cascade = CascadeType.REMOVE)
+    @JsonManagedReference
+    private List<InvoiceResTable> invoiceResTables;
 }

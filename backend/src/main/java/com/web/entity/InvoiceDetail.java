@@ -1,4 +1,5 @@
 package com.web.entity;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -23,5 +24,6 @@ public class InvoiceDetail {
     private Product product;
 
     @ManyToOne
+    @JsonBackReference
     private Invoice invoice;
 }
