@@ -5,6 +5,8 @@ import com.web.entity.Category;
 import com.web.entity.Voucher;
 import com.web.exception.MessageException;
 import com.web.repository.VoucherRepository;
+import com.web.service.CartService;
+import com.web.utils.UserUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -25,6 +27,13 @@ public class VoucherApi {
 
     @Autowired
     private VoucherRepository voucherRepository;
+
+    @Autowired
+    private UserUtils userUtils;
+
+    @Autowired
+    private CartService cartService;
+
 
     @PostMapping("/admin/create")
     public ResponseEntity<?> save(@RequestBody Voucher voucher){
@@ -106,5 +115,12 @@ public class VoucherApi {
             throw new MessageException("Số tiền đơn hàng chưa đủ, hãy mua thêm "+(ex.get().getMinAmount() - amount)+" để được áp dụng voucher");
         }
         return new ResponseEntity<>(ex.get(),HttpStatus.OK);
+    }
+
+    @GetMapping("/user/kha-dung")
+    public ResponseEntity<?> voucherKhaDung(){
+        Double total = cartService.totalAmountCart();
+        List<Voucher> list = voucherRepository.voucherKhaDung(total, new Date(System.currentTimeMillis()));
+        return new ResponseEntity<>(list,HttpStatus.OK);
     }
 }

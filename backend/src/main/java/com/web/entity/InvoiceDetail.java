@@ -1,24 +1,27 @@
 package com.web.entity;
-
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "res_table")
+@Table(name = "invoice_detail")
 @Getter
 @Setter
-public class ResTable {
+public class InvoiceDetail {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
-    private String name;
+    private Integer quantity;
 
-    private Integer floor;
+    private Double price;
 
-    private Boolean isLocked = false;
+    @ManyToOne
+    private Product product;
+
+    @ManyToOne
+    private Invoice invoice;
 }

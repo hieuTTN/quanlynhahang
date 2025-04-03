@@ -1786,13 +1786,12 @@
 
 
 /* Show the indicator (dot/circle) when checked */
-
 .radiocustom input:checked~.checkmark:after {
     display: block;
 }
 
 .momopay {
-    width: 30px;
+    width: 60px !important;
 }
 
 .tablepay {

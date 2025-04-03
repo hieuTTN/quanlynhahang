@@ -24,4 +24,7 @@ public interface VoucherRepository extends JpaRepository<Voucher,Long> {
 
     @Query("select v from Voucher v where v.startDate >= ?1 and v.endDate <= ?2")
     public Page<Voucher> findByDate(Date start, Date end, Pageable pageable);
+
+    @Query("select v from Voucher v where v.minAmount <= ?1 and v.startDate <= ?2 and v.endDate >= ?2")
+    List<Voucher> voucherKhaDung(Double tongCart, Date date);
 }

@@ -4,21 +4,22 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.sql.Date;
 
 @Entity
-@Table(name = "res_table")
+@Table(name = "invoice_res_table")
 @Getter
 @Setter
-public class ResTable {
+public class InvoiceResTable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
-    private String name;
+    @ManyToOne
+    private ResTable resTable;
 
-    private Integer floor;
-
-    private Boolean isLocked = false;
+    @ManyToOne
+    private Invoice invoice;
 }

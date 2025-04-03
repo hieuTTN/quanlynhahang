@@ -7,12 +7,8 @@ import lombok.Setter;
 @Setter
 public class ResponsePayment {
     private String url;
-    private String orderId;
-    private String requestId;
-    public ResponsePayment(String url, String orderId, String requestId) {
+    public ResponsePayment(String url) {
         this.url = url;
-        this.orderId = orderId;
-        this.requestId = requestId;
     }
 }
 

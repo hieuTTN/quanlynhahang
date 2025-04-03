@@ -46,6 +46,7 @@ const AdminTable = ()=>{
         const payload = {
             id: event.target.elements.idcate.value,
             name: event.target.elements.catename.value,
+            floor: event.target.elements.tang.value,
             isLocked: event.target.elements.isLocked.checked,
         };
         const res = await postMethodPayload('/api/res-table/admin/create', payload)
@@ -88,6 +89,7 @@ const AdminTable = ()=>{
                             <tr>
                                 <th>Id</th>
                                 <th>Tên bàn</th>
+                                <th>Tầng</th>
                                 <th>Trạng thái</th>
                                 <th>Chức năng</th>
                             </tr>
@@ -97,6 +99,7 @@ const AdminTable = ()=>{
                                 return  <tr>
                                     <td>{item.id}</td>
                                     <td>{item.name}</td>
+                                    <td>Tầng: {item.floor}</td>
                                     <td>{item.isLocked == false?<span className='errortext'>Đang trống</span>:<span className='successtext'>Đang có người ăn</span>}</td>
                                     <td class="sticky-col">
                                         <button onClick={()=>setAData(item)} data-bs-toggle="modal" data-bs-target="#addtk" class="edit-btn"><i className='fa fa-edit'></i></button>
@@ -123,9 +126,18 @@ const AdminTable = ()=>{
                                 <br></br><label class="checkbox-custom">Trạng thái
                                     <input checked={checked} onChange={() => setChecked(!checked)} name="isLocked" id='isLocked' type="checkbox"/>
                                     <span class="checkmark-checkbox"></span>
-                                </label>
+                                </label><br/>
+                                <label>Tầng</label>
+                                <select name='tang' className='form-control'>
+                                    <option value='1' selected={cate==null?true:cate.floor==1}>Tâng 1</option>
+                                    <option value='2' selected={cate==null?true:cate.floor==2}>Tâng 2</option>
+                                    <option value='3' selected={cate==null?true:cate.floor==3}>Tâng 3</option>
+                                    <option value='4' selected={cate==null?true:cate.floor==4}>Tâng 4</option>
+                                    <option value='5' selected={cate==null?true:cate.floor==5}>Tâng 5</option>
+                                    <option value='6' selected={cate==null?true:cate.floor==6}>Tâng 6</option>
+                                </select>
                                 <br/><br/>
-                                <button class="btn btn-primary form-control action-btn">Thêm/ Cập nhật danh mục</button>
+                                <button class="btn btn-primary form-control action-btn">Thêm/ Cập nhật bàn</button>
                             </form>
                         </div>
                     </div>

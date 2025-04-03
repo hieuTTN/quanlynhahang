@@ -1,6 +1,7 @@
 package com.web.api;
 
 import com.web.dto.response.CategoryDto;
+import com.web.dto.response.ResTableResponse;
 import com.web.entity.Category;
 import com.web.entity.ResTable;
 import com.web.service.CategoryService;
@@ -13,6 +14,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.sql.Date;
 import java.util.List;
 
 @RestController
@@ -38,6 +40,12 @@ public class ResTableApi {
     @GetMapping("/public/find-all")
     public ResponseEntity<?> findAllList(){
         List<ResTable> result = resTableService.findAll();
+        return new ResponseEntity<>(result,HttpStatus.OK);
+    }
+
+    @GetMapping("/public/find-by-date")
+    public ResponseEntity<?> findByDate(@RequestParam Date date){
+        List<ResTableResponse> result = resTableService.findByDate(date);
         return new ResponseEntity<>(result,HttpStatus.OK);
     }
 }
