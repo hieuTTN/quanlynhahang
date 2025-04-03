@@ -30,6 +30,7 @@ import datLaiMatKhauPage from '../pages/public/datlaimatkhau'
 import taikhoan from '../pages/user/taikhoan'
 import DoiMatKhau from '../pages/user/doimatkhau'
 import ThanhCong from '../pages/user/thanhcong'
+import PublicCheckout from '../pages/user/checkout'
 
 
 
@@ -43,6 +44,7 @@ const publicRoutes = [
     { path: "/datlaimatkhau", component: datLaiMatKhauPage, layout: layoutLogin },
     { path: "/tin-tuc", component: TinTuc },
     { path: "/chitietbaiviet", component: ChiTietBaiViet },
+    { path: "/checkout", component: PublicCheckout },
 ];
 
 const userRoutes = [

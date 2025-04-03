@@ -1,4 +1,3 @@
-
 function footer(){
     return(
      <>
@@ -49,6 +48,7 @@ function footer(){
           </div>
         </div>
       </section>
+
      </>
     );
 }
