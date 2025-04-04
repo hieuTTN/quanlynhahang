@@ -82,6 +82,7 @@ public class InvoiceService {
         if(invoiceRequest.getVoucherId() != null){
             Voucher voucher = voucherRepository.findById(invoiceRequest.getVoucherId()).get();
             totalAmount -= voucher.getDiscount();
+            invoice.setVoucher(voucher);
         }
         invoice.setTotalAmount(totalAmount);
         invoiceRepository.save(invoice);

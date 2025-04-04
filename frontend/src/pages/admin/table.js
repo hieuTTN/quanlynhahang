@@ -47,7 +47,6 @@ const AdminTable = ()=>{
             id: event.target.elements.idcate.value,
             name: event.target.elements.catename.value,
             floor: event.target.elements.tang.value,
-            isLocked: event.target.elements.isLocked.checked,
         };
         const res = await postMethodPayload('/api/res-table/admin/create', payload)
         if(res.status < 300){
