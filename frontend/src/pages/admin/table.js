@@ -90,7 +90,6 @@ const AdminTable = ()=>{
                                 <th>Id</th>
                                 <th>Tên bàn</th>
                                 <th>Tầng</th>
-                                <th>Trạng thái</th>
                                 <th>Chức năng</th>
                             </tr>
                         </thead>
@@ -100,7 +99,6 @@ const AdminTable = ()=>{
                                     <td>{item.id}</td>
                                     <td>{item.name}</td>
                                     <td>Tầng: {item.floor}</td>
-                                    <td>{item.isLocked == false?<span className='errortext'>Đang trống</span>:<span className='successtext'>Đang có người ăn</span>}</td>
                                     <td class="sticky-col">
                                         <button onClick={()=>setAData(item)} data-bs-toggle="modal" data-bs-target="#addtk" class="edit-btn"><i className='fa fa-edit'></i></button>
                                         <button onClick={()=>deleteData(item.id)} class="delete-btn"><i className='fa fa-trash'></i></button>
@@ -121,13 +119,9 @@ const AdminTable = ()=>{
                         <div class="modal-body row">
                             <form class="col-sm-12 marginauto" onSubmit={saveData} method='post'>
                                 <input defaultValue={cate==null?'':cate.id} name="idcate" id='idcate' type="hidden" />
-                                <label>Tên bàn</label>
+                                <label class="lb-form">Tên bàn</label>
                                 <input defaultValue={cate==null?'':cate.name} name="catename" id='catename' type="text" class="form-control" />
-                                <br></br><label class="checkbox-custom">Trạng thái
-                                    <input checked={checked} onChange={() => setChecked(!checked)} name="isLocked" id='isLocked' type="checkbox"/>
-                                    <span class="checkmark-checkbox"></span>
-                                </label><br/>
-                                <label>Tầng</label>
+                                <label class="lb-form">Tầng</label>
                                 <select name='tang' className='form-control'>
                                     <option value='1' selected={cate==null?true:cate.floor==1}>Tâng 1</option>
                                     <option value='2' selected={cate==null?true:cate.floor==2}>Tâng 2</option>

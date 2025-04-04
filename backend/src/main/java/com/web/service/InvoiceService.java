@@ -1,6 +1,7 @@
 package com.web.service;
 
 import com.web.dto.request.InvoiceRequest;
+import com.web.dto.request.ProductDtoInvoice;
 import com.web.entity.*;
 import com.web.enums.PayStatus;
 import com.web.exception.MessageException;
@@ -8,6 +9,8 @@ import com.web.repository.*;
 import com.web.utils.UserUtils;
 import com.web.vnpay.VNPayService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 
 import java.sql.Date;
@@ -44,6 +47,13 @@ public class InvoiceService {
     @Autowired
     private CartService cartService;
 
+    @Autowired
+    private ProductRepository productRepository;
+
+    @Autowired
+    NotificationService notificationService;
+
+
     public Invoice create(InvoiceRequest invoiceRequest) {
         User user = userUtils.getUserWithAuthority();
         List<Cart> list = cartRepository.findByUser(user.getId());
@@ -65,6 +75,7 @@ public class InvoiceService {
         invoice.setBookDate(invoiceRequest.getBookDate());
         invoice.setFullName(invoiceRequest.getFullName());
         invoice.setNote(invoiceRequest.getNote());
+        invoice.setCostPlus(0D);
         invoice.setUser(user);
         invoice.setPayStatus(PayStatus.DA_THANH_TOAN);
 
@@ -79,6 +90,7 @@ public class InvoiceService {
             invoiceDetail.setInvoice(invoice);
             invoiceDetail.setPrice(c.getProduct().getPrice());
             invoiceDetail.setQuantity(c.getQuantity());
+            invoiceDetail.setIsMore(false);
             invoiceDetail.setProduct(c.getProduct());
             invoiceDetailRepository.save(invoiceDetail);
         }
@@ -97,6 +109,8 @@ public class InvoiceService {
         historyPay.setTotalAmount(totalAmount);
         historyPayRepository.save(historyPay);
         cartService.removeCart();
+
+        notificationService.save("Có 1 lịch đặt bàn mới, mã lịch: "+invoice.getId()+" Ngày đặt: "+invoice.getCreatedTime()+", "+ invoice.getCreatedDate(),"lichsudat","Có lịch đặt bàn mới");
         return invoice;
     }
 
@@ -106,4 +120,56 @@ public class InvoiceService {
     }
 
 
+    public Page<Invoice> findAllFull(Date from, Date to, Pageable pageable) {
+        if(from == null || to == null){
+            from = Date.valueOf("2000-01-01");
+            to = Date.valueOf("2200-01-01");
+        }
+        Page<Invoice> invoice = invoiceRepository.findByDate(from, to, pageable);
+        return invoice;
+    }
+
+    public Invoice addMoreDetail(Long idInvoice, List<ProductDtoInvoice> list){
+        Invoice i = invoiceRepository.findById(idInvoice).get();
+        Double addCost = 0D;
+        List<InvoiceDetail> iv = i.getInvoiceDetails();
+        for (ProductDtoInvoice p : list) {
+            Product product = productRepository.findById(p.getIdProduct()).get();
+            addCost += product.getPrice() * p.getQuantity();
+            boolean check = true;
+            for(InvoiceDetail ivd : iv){
+                if(ivd.getProduct().getId() == p.getIdProduct() && ivd.getIsMore() == true){
+                    ivd.setQuantity(ivd.getQuantity() + p.getQuantity());
+                    invoiceDetailRepository.save(ivd);
+                    check = false;
+                    break;
+                }
+            }
+            if(check){
+                InvoiceDetail invoiceDetail = new InvoiceDetail();
+                invoiceDetail.setInvoice(i);
+                invoiceDetail.setIsMore(true);
+                invoiceDetail.setProduct(product);
+                invoiceDetail.setQuantity(p.getQuantity());
+                invoiceDetail.setPrice(product.getPrice());
+                invoiceDetailRepository.save(invoiceDetail);
+            }
+        }
+        i.setCostPlus(i.getCostPlus() + addCost);
+        i.setPayStatus(PayStatus.CHUA_THANH_TOAN_DU);
+        invoiceRepository.save(i);
+        return i;
+    }
+
+
+    public Invoice updateStatus(PayStatus payStatus, Long invoiceId){
+        Invoice invoice = invoiceRepository.findById(invoiceId).get();
+        invoice.setPayStatus(payStatus);
+        invoiceRepository.save(invoice);
+        return invoice;
+    }
+
+    public Invoice findById(Long id) {
+        return invoiceRepository.findById(id).get();
+    }
 }

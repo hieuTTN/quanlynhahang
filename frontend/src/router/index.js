@@ -1,4 +1,5 @@
 import layoutAdmin from '../layout/admin/Layout'
+import billAdmin from '../layout/admin/BillLayout'
 import layoutLogin from '../layout/user/loginlayout/login'
 import AccountLayout from '../layout/user/accountLayout/accountLayout'
 
@@ -13,6 +14,10 @@ import AdminAddProduct from '../pages/admin/addproduct'
 import AdminTable from '../pages/admin/table'
 import AdminVoucher from '../pages/admin/voucher'
 import AdminAddVoucher from '../pages/admin/addvoucher'
+import AdminLichSuDat from '../pages/admin/lichsudat'
+import AdminThongbao from '../pages/admin/thongbao'
+import ThongKeAdmin from '../pages/admin/thongke'
+import InvoiceBill from '../pages/admin/inbill'
 
 
 
@@ -69,6 +74,10 @@ const adminRoutes = [
     { path: "/admin/table", component: AdminTable, layout: layoutAdmin },
     { path: "/admin/voucher", component: AdminVoucher, layout: layoutAdmin },
     { path: "/admin/addvoucher", component: AdminAddVoucher, layout: layoutAdmin },
+    { path: "/admin/lichsudat", component: AdminLichSuDat, layout: layoutAdmin },
+    { path: "/admin/thong-bao", component: AdminThongbao, layout: layoutAdmin },
+    { path: "/admin/thongke", component: ThongKeAdmin, layout: layoutAdmin },
+    { path: "/admin/inbill", component: InvoiceBill, layout: billAdmin },
 ];
 
 

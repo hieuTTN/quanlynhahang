@@ -11,7 +11,6 @@ function Header({ children }){
      // Ensure useLocation is called at the top level of the component
      const location = useLocation();
      const [message, setMessage] = useState('');
-     const [chatMessages, setChatMessages] = useState([]);
      const [client, setClient] = useState(null);
      const [countNoti, setCountNoti] = useState(0);
      const [topNoti, setTopNoti] = useState([]);
@@ -158,6 +157,11 @@ function Header({ children }){
                         <i class="fa fa-table"></i> Quản lý bàn
                     </a>
                 </li>
+                <li className={isActive(["/admin/lichsudat"])}>
+                    <a href="lichsudat" class="text-white text-decoration-none">
+                        <i class="fa fa-table"></i> Đặt bàn
+                    </a>
+                </li>
                 <li className={isActive(["/admin/product", "/admin/addproducts"])}>
                     <a href="#dashboardSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle text-white text-decoration-none">
                         <i class="fa fa-home"></i> Món ăn
@@ -171,18 +175,18 @@ function Header({ children }){
                         </li>
                     </ul>
                 </li>
-                <li className={isActive(["/admin/history-pay", "/admin/deduction-history","/admin/thong-ke"])}>
+                <li className={isActive(["/admin/thongke"])}>
                     <a href="#dashboardSubmenu1" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle text-white text-decoration-none">
                         <i class="fa-solid fa-chart-line"></i> Thống kê
                     </a>
                     <ul class="collapse list-unstyleds" id="dashboardSubmenu1">
                         <li class="nav-item">
-                            <a href="history-pay" class="text-white text-decoration-none ps-4"><i class="fa fa-clock"></i> Doanh thu</a>
+                            <a href="thongke" class="text-white text-decoration-none ps-4"><i class="fa fa-bar-chart"></i> Doanh thu</a>
                         </li>
                     </ul>
                 </li>
-                <li className={isActive(["/admin/report"])}>
-                    <a href="report" class="text-white text-decoration-none">
+                <li className={isActive(["/admin/thong-bao"])}>
+                    <a href="thong-bao" class="text-white text-decoration-none">
                         <i class="fa fa-flag"></i> Thông báo
                     </a>
                 </li>

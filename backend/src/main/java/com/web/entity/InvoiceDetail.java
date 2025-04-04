@@ -20,10 +20,14 @@ public class InvoiceDetail {
 
     private Double price;
 
+    private Boolean isMore;
+
     @ManyToOne
     private Product product;
 
     @ManyToOne
     @JsonBackReference
     private Invoice invoice;
+
+
 }

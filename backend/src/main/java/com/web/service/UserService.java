@@ -51,6 +51,9 @@ public class UserService {
     @Value("${url.frontend}")
     private String feUrl;
 
+    @Autowired
+    NotificationService notificationService;
+
 
     public TokenDto login(String username, String password, String tokenFcm) throws Exception {
         Optional<User> users = userRepository.findByUsername(username);
@@ -88,6 +91,8 @@ public class UserService {
         mailService.sendEmail(user.getEmail(), "Xác nhận tài khoản của bạn","Cảm ơn bạn đã tin tưởng và xử dụng dịch vụ của chúng tôi:<br>" +
                 "Để kích hoạt tài khoản của bạn, hãy nhập mã xác nhận bên dưới để xác thực tài khoản của bạn<br><br>" +
                 "<a style=\"background-color: #2f5fad; padding: 10px; color: #fff; font-size: 18px; font-weight: bold;\">"+user.getActivation_key()+"</a>",false, true);
+
+        notificationService.save("Có 1 tài khoản mới, mã tài khoản: "+user.getId()+" Ngày tạo: "+user.getCreatedDate(),"user","Có tài khoản mới");
         return result;
     }
 
