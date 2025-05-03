@@ -8,6 +8,8 @@ import { Button, Card, Col, DatePicker, Input, Pagination, Row, Table } from "an
 import { Bar } from 'react-chartjs-2';
 import toast from 'react-hot-toast';
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
+import * as XLSX from "xlsx";
+import { saveAs } from "file-saver";
 
 
 var token = localStorage.getItem("token");
@@ -17,14 +19,14 @@ const { RangePicker } = DatePicker;
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 const ThongKeAdmin = ()=>{
     const [chartData, setChartData] = useState(null);
+    const [doanhThuNgay, setDoanhThuNgay] = useState([]);
+    const [doanhThunamdata, setDoanhThuNamData] = useState([]);
     const [doanhThuThangNay, setDoanhThuThangNay] = useState(0);
     const [doanhthuHomNay, setDoanhThuHomNay] = useState(0);
     const [soLuongUser, setSoLuongUser] = useState(0);
     const [soLuongBds, setSoLuongBds] = useState(0);
-    const [soLuongBdsTinh, setSoLuongBdsTinh] = useState([]);
     const [year, setYear] = useState([]);
     const [curyear, setCurYear] = useState(0);
-    const [tinViPham, setTinViPham] = useState([]);
     const [from, setFrom] = useState('');
     const [to, setTo] = useState('');
     
@@ -49,6 +51,7 @@ const ThongKeAdmin = ()=>{
             var year = new Date().getFullYear();
             var response = await getMethod('/api/statistic/admin/doanh-thu-nam?nam='+year);
             var result = await response.json();
+            setDoanhThuNamData(result);
             doanhThunam(result)
             setCurYear(year)
 
@@ -82,6 +85,7 @@ const ThongKeAdmin = ()=>{
         setCurYear(nam)
         var response = await getMethod('/api/statistic/admin/doanh-thu-nam?nam='+nam);
         var result = await response.json();
+        setDoanhThuNamData(result)
         doanhThunam(result)
     }
 
@@ -174,6 +178,7 @@ const ThongKeAdmin = ()=>{
         var response = await getMethod('/api/statistic/admin/doanh-thu-ngay?from='+from+'&to='+to);
         var result = await response.json();
         console.log(result);
+        setDoanhThuNgay(result)
         const labels = result.map(item => item.ngay);
         const data = result.map(item => item.doanhThu);
         setChartData({
@@ -206,8 +211,60 @@ const ThongKeAdmin = ()=>{
         setTo(dateStrings[1])
     }
 
-
+    function xuatExcelNgay(){
+        const formattedData = doanhThuNgay.map(item => ({
+            "Ngày": item.ngay,
+            "Doanh thu": item.doanhThu
+        }));
+    
+        // Tạo worksheet (tự động có hàng tiêu đề là "Ngày", "Doanh thu")
+        const worksheet = XLSX.utils.json_to_sheet(formattedData);
+    
+        // Tăng độ rộng các cột
+        worksheet["!cols"] = [
+            { wch: 15 }, // "Ngày"
+            { wch: 20 }  // "Doanh thu"
+        ];
+    
+        // Tạo workbook và ghi file
+        const workbook = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(workbook, worksheet, "DoanhThuNgay");
+    
+        const excelBuffer = XLSX.write(workbook, { bookType: "xlsx", type: "array" });
+        const file = new Blob([excelBuffer], { type: "application/octet-stream" });
+    
+        saveAs(file, `doanh-thu-ngay_${from + '-'+to}.xlsx`);
+    }
   
+    function xuatExcelNam(){
+          // Tạo mảng dữ liệu từ tháng 1 đến 12
+        const rows = doanhThunamdata.map((doanhThu, index) => ({
+            "Tháng": index + 1,
+            "Doanh thu": doanhThu
+        }));
+
+        // Tạo worksheet từ dữ liệu (ghi từ dòng 2)
+        const worksheet = XLSX.utils.json_to_sheet(rows, { origin: "A2" });
+
+        // Ghi dòng đầu tiên là tiêu đề năm (dòng 1, cột A)
+        XLSX.utils.sheet_add_aoa(worksheet, [[`Doanh thu năm ${curyear}`]], { origin: "A1" });
+
+        // Đặt độ rộng cho cột
+        worksheet["!cols"] = [
+            { wch: 10 }, // Cột Tháng
+            { wch: 20 }  // Cột Doanh thu
+        ];
+
+        // Tạo workbook và xuất file
+        const workbook = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(workbook, worksheet, "DoanhThuNam");
+
+        const excelBuffer = XLSX.write(workbook, { bookType: "xlsx", type: "array" });
+        const file = new Blob([excelBuffer], { type: "application/octet-stream" });
+
+        saveAs(file, `doanh-thu-nam-${curyear}.xlsx`);
+        
+    }
     return(
        <>
         <div class="row">
@@ -248,6 +305,7 @@ const ThongKeAdmin = ()=>{
             </div>
             <div className='col-sm-9'>
                 <div class="headerpageadmin d-flex justify-content-between align-items-center p-3 bg-light border">
+                <button onClick={()=>xuatExcelNam()} className='btn btn-primary'>Xuất excel</button>
                     <strong class="text-left"><i className='fa fa-users'></i> Doanh thu năm {curyear}</strong>
                     <div class="search-wrapper d-flex align-items-center">
                         <Select
@@ -269,53 +327,53 @@ const ThongKeAdmin = ()=>{
             </div>
         </div>
 
-        <div class="row" style={{paddingTop:'20px'}}>
-            <div className='col-sm-4'>
+        <div class="headerpageadmin d-flex justify-content-between align-items-center p-3 bg-light border">
+            <strong class="text-left"><i className='fa fa-users'></i> Doanh thu theo ngày</strong>
+            <div class="search-wrapper d-flex align-items-center">
                 <RangePicker
                     style={{ width: "100%" }}
                     format="YYYY-MM-DD"
                     placeholder={["Từ ngày", "Đến ngày"]}
                     onChange={onDateChange}
-                />
-            </div>
-            <div className='col-sm-3'>
-                <button onClick={()=>loadDoanhThuNgay()} className='btn btn-primary'>Lọc doanh thu ngày</button>
-            </div>
-            <div className='col-sm-12'>
+                />  
+                <span dangerouslySetInnerHTML={{__html:'&ThinSpace;'}}></span>
+                <button onClick={()=>loadDoanhThuNgay()} className='btn btn-primary form-control btnhead'>Lọc doanh thu ngày</button>
+                <span dangerouslySetInnerHTML={{__html:'&ThinSpace;'}}></span>
+                <button onClick={()=>xuatExcelNgay()} className='btn btn-primary form-control btnhead'>Xuất file excel</button>
             </div>
         </div>
         {chartData && (
-                    <Bar
-                        data={chartData}
-                        options={{
-                            responsive: true,
-                            plugins: {
-                                legend: {
-                                    position: 'top',
-                                },
-                                title: {
-                                    display: true,
-                                    text: 'Biểu đồ doanh thu theo ngày',
-                                },
-                            },
-                            scales: {
-                                y: {
-                                    beginAtZero: true,
-                                    title: {
-                                        display: true,
-                                        text: 'Doanh thu (VND)',
-                                    },
-                                },
-                                x: {
-                                    title: {
-                                        display: true,
-                                        text: 'Ngày',
-                                    },
-                                },
-                            },
-                        }}
-                    />
-                )}
+        <Bar
+            data={chartData}
+            options={{
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Biểu đồ doanh thu theo ngày',
+                    },
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Doanh thu (VND)',
+                        },
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Ngày',
+                        },
+                    },
+                },
+            }}
+        />
+        )}
        </>
     );
 }

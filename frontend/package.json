@@ -15,8 +15,10 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "@tinymce/tinymce-react": "^5.0.0",
+    "antd": "^5.20.6",
     "chart.js": "^4.4.2",
     "datatables.net-dt": "^2.0.3",
+    "file-saver": "^2.0.5",
     "fs-extra": "^11.2.0",
     "html-to-react": "^1.7.0",
     "jquery": "^3.7.1",
@@ -42,8 +44,8 @@
     "sweetalert2": "^11.10.7",
     "swiper": "^11.1.12",
     "tinymce": "^7.0.0",
-    "antd": "^5.20.6",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "xlsx": "^0.18.5"
   },
   "scripts": {
     "start": "set PORT=3000 && react-scripts start",

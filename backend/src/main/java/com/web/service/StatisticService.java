@@ -57,7 +57,8 @@ public class StatisticService {
     public List<Long> doanhThuNam(Integer nam){
         List<Long> list = new ArrayList<>();
         for(int i=1; i< 13; i++){
-            Long tong = historyPayRepository.tinhDoanhThuNam(i, nam);
+            Long tong = invoiceRepository.tinhDoanhThuNam(i, nam, PayStatus.DA_THANH_TOAN);
+            if(tong == null) tong = 0L;
             list.add(tong);
         }
         return list;
