@@ -1,6 +1,7 @@
 package com.web.service;
 
 
+import com.web.dto.response.DoanhThuNgay;
 import com.web.enums.PayStatus;
 import com.web.repository.HistoryPayRepository;
 import com.web.repository.InvoiceRepository;
@@ -12,7 +13,9 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.math.BigInteger;
+import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 @Component
@@ -51,11 +54,23 @@ public class StatisticService {
     }
 
 
-    public List<Long> doanhThuNam(@RequestParam("nam") Integer nam){
+    public List<Long> doanhThuNam(Integer nam){
         List<Long> list = new ArrayList<>();
         for(int i=1; i< 13; i++){
             Long tong = historyPayRepository.tinhDoanhThuNam(i, nam);
             list.add(tong);
+        }
+        return list;
+    }
+
+    public List<DoanhThuNgay> doanhThuKhoangNgay(Date from, Date to){
+        List<DoanhThuNgay> list = new ArrayList<>();
+        List<Date> dates = getListDatesBetween(from, to);
+        for(Date d : dates){
+            Double doanhThu = invoiceRepository.calByDate(d, PayStatus.DA_THANH_TOAN);
+            if(doanhThu == null) doanhThu = 0D;
+            DoanhThuNgay doanhThuNgay = new DoanhThuNgay(doanhThu, d);
+            list.add(doanhThuNgay);
         }
         return list;
     }
@@ -67,5 +82,18 @@ public class StatisticService {
         Long tongTin = invoiceRepository.count();
         result[0] = tongTin-tongHuy;
         return result;
+    }
+
+    public List<Date> getListDatesBetween(Date from, Date to) {
+        List<Date> dates = new ArrayList<>();
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(from);
+
+        while (!calendar.getTime().after(to)) {
+            dates.add(new Date(calendar.getTimeInMillis()));
+            calendar.add(Calendar.DATE, 1); // cộng thêm 1 ngày
+        }
+
+        return dates;
     }
 }

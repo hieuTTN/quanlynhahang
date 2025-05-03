@@ -4,11 +4,19 @@ import {getMethod} from '../../services/request'
 import {formatMoney} from '../../services/money'
 import Chart from "chart.js/auto";
 import Select from 'react-select';
+import { Button, Card, Col, DatePicker, Input, Pagination, Row, Table } from "antd";
+import { Bar } from 'react-chartjs-2';
+import toast from 'react-hot-toast';
+import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
+
 
 var token = localStorage.getItem("token");
 
+const { RangePicker } = DatePicker;
 
+ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 const ThongKeAdmin = ()=>{
+    const [chartData, setChartData] = useState(null);
     const [doanhThuThangNay, setDoanhThuThangNay] = useState(0);
     const [doanhthuHomNay, setDoanhThuHomNay] = useState(0);
     const [soLuongUser, setSoLuongUser] = useState(0);
@@ -17,6 +25,8 @@ const ThongKeAdmin = ()=>{
     const [year, setYear] = useState([]);
     const [curyear, setCurYear] = useState(0);
     const [tinViPham, setTinViPham] = useState([]);
+    const [from, setFrom] = useState('');
+    const [to, setTo] = useState('');
     
     useEffect(()=>{
         const getThongKe= async() =>{
@@ -66,8 +76,6 @@ const ThongKeAdmin = ()=>{
 
     }, []);
 
-    console.log(tinViPham);
-    
 
     async function locDoanhThuNam(option) {
         var nam = option.value;
@@ -155,6 +163,32 @@ const ThongKeAdmin = ()=>{
         });
     }
 
+    async function loadDoanhThuNgay(){
+        if(from == '' || to == ''){
+            toast.error("Hãy chọn ngày");return;
+        }
+        const date1 = new Date(from);
+        const date2 = new Date(to);
+        const diffInMs = Math.abs(date2 - date1);
+        const diffInDays = diffInMs / (1000 * 60 * 60 * 24);
+        var response = await getMethod('/api/statistic/admin/doanh-thu-ngay?from='+from+'&to='+to);
+        var result = await response.json();
+        console.log(result);
+        const labels = result.map(item => item.ngay);
+        const data = result.map(item => item.doanhThu);
+        setChartData({
+            labels: labels,
+            datasets: [
+                {
+                    label: 'Doanh thu theo ngày',
+                    data: data,
+                    backgroundColor: 'rgba(54, 162, 235, 0.6)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1,
+                },
+            ],
+        });
+    }
     
     const VND = new Intl.NumberFormat('vi-VN', {
         style: 'currency',
@@ -165,6 +199,13 @@ const ThongKeAdmin = ()=>{
         return VND.format(money);
     }
     
+    function onDateChange(dates, dateStrings){
+        console.log(dates);
+        console.log(dateStrings);
+        setFrom(dateStrings[0])
+        setTo(dateStrings[1])
+    }
+
 
   
     return(
@@ -227,6 +268,54 @@ const ThongKeAdmin = ()=>{
                 </div>
             </div>
         </div>
+
+        <div class="row" style={{paddingTop:'20px'}}>
+            <div className='col-sm-4'>
+                <RangePicker
+                    style={{ width: "100%" }}
+                    format="YYYY-MM-DD"
+                    placeholder={["Từ ngày", "Đến ngày"]}
+                    onChange={onDateChange}
+                />
+            </div>
+            <div className='col-sm-3'>
+                <button onClick={()=>loadDoanhThuNgay()} className='btn btn-primary'>Lọc doanh thu ngày</button>
+            </div>
+            <div className='col-sm-12'>
+            </div>
+        </div>
+        {chartData && (
+                    <Bar
+                        data={chartData}
+                        options={{
+                            responsive: true,
+                            plugins: {
+                                legend: {
+                                    position: 'top',
+                                },
+                                title: {
+                                    display: true,
+                                    text: 'Biểu đồ doanh thu theo ngày',
+                                },
+                            },
+                            scales: {
+                                y: {
+                                    beginAtZero: true,
+                                    title: {
+                                        display: true,
+                                        text: 'Doanh thu (VND)',
+                                    },
+                                },
+                                x: {
+                                    title: {
+                                        display: true,
+                                        text: 'Ngày',
+                                    },
+                                },
+                            },
+                        }}
+                    />
+                )}
        </>
     );
 }

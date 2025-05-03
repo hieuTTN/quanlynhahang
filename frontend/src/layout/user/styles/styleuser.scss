@@ -1961,3 +1961,62 @@
     display: block;
     margin-top: 20px;
 }
+
+.imgdetailpro {
+    width: 100%;
+}
+.imgldetail {
+    aspect-ratio: 1 / 1;
+    width: 100%;
+    object-fit: cover;
+    cursor: pointer;
+    /* padding-left: 5px; */
+}
+.singdimg {
+    padding: 0px 5px 0px 10px;
+}
+.imgactive {
+    border: 2px solid #fcaf17;
+    border-radius: 3px;
+    padding: 2px;
+}
+.detailnamepro {
+    font-family: 'SVN-Gilroy';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 32px;
+    text-transform: capitalize;
+    color: #17191C;
+}
+.codepro {
+    padding: 0px 10px 0px 0px;
+    border-right: 1px solid #D9D9D9;
+    color: #7A7A9D;
+    font-family: 'SVN-Gilroy';
+}
+.quansale {
+    padding: 0px 0px 0px 10px;
+    color: #17191C;
+    font-family: 'SVN-Gilroy';
+}
+.pricedetail {
+    margin-top: 5px;
+    color: rgb(23, 25, 28);
+    font-weight: 600;
+    font-size: 20px;
+    font-family: 'SVN-Gilroy Bold';
+    line-height: 22px;
+}
+.listimgdetail {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+#descriptiondetail img{
+    width: 100%;
+    object-fit: cover;
+}
+.cateservicename a{
+    text-decoration: none;
+    color: #808080;
+}

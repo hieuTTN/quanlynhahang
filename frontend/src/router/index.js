@@ -30,6 +30,7 @@ import regisPage from '../pages/public/regis'
 import confirmPage from '../pages/public/confirm'
 import forgotPage from '../pages/public/forgot'
 import datLaiMatKhauPage from '../pages/public/datlaimatkhau'
+import SanPham from '../pages/public/sanpham'
 
 //user
 import taikhoan from '../pages/user/taikhoan'
@@ -53,6 +54,7 @@ const publicRoutes = [
     { path: "/chitietbaiviet", component: ChiTietBaiViet },
     { path: "/checkout", component: PublicCheckout },
     { path: "/payment", component: PublicPayment },
+    { path: "/sanpham", component: SanPham },
 ];
 
 const userRoutes = [

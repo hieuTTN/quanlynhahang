@@ -20,4 +20,7 @@ public interface InvoiceRepository extends JpaRepository<Invoice, Long> {
 
     @Query("select count(i.id) from Invoice i where i.payStatus = ?1")
     Long countHuy(PayStatus daHuy);
+
+    @Query("select sum(i.totalAmount) from Invoice i where i.bookDate = ?1 and i.payStatus = ?2")
+    Double calByDate(Date date,PayStatus payStatus);
 }

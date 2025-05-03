@@ -20,7 +20,7 @@ public interface CategoryRepository extends JpaRepository<Category,Long> {
     public List<Category> findAll();
 
     @Query(value = "select c.id, c.name, c.image," +
-            "(SELECT 1) as quantity " +
+            "(SELECT count(p.id) from product p where p.category_id = c.id) as quantity " +
             "from category c", nativeQuery = true)
     public List<CategoryDto> findAllQuantity();
 

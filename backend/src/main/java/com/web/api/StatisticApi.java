@@ -1,12 +1,14 @@
 package com.web.api;
 
 
+import com.web.dto.response.DoanhThuNgay;
 import com.web.service.StatisticService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Date;
 import java.util.List;
 
 @RestController
@@ -44,6 +46,12 @@ public class StatisticApi {
     @GetMapping("/admin/doanh-thu-nam")
     public ResponseEntity<?> doanhThuNam(@RequestParam("nam") Integer nam){
         List<Long> result = statisticService.doanhThuNam(nam);
+        return new ResponseEntity<>(result, HttpStatus.OK);
+    }
+
+    @GetMapping("/admin/doanh-thu-ngay")
+    public ResponseEntity<?> doanhThuNam(@RequestParam Date from, @RequestParam Date to){
+        List<DoanhThuNgay> result = statisticService.doanhThuKhoangNgay(from, to);
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
