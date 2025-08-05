@@ -1,3 +1,4 @@
+import ChatBot from "../chatbot/ChatBot";
 function footer(){
     return(
      <>
@@ -19,9 +20,9 @@ function footer(){
           <div class="row mt-3">
             <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
               <img src="image/logo.png" alt=""/><br/><br/>
-              <p>CÔNG TY CỔ PHẦN PROPERTYGURU VIỆT NAM</p>
-              <p><i class="fa fa-map-marker"></i> Tầng 31, Keangnam Hanoi Landmark, Phạm Hùng, Nam Từ Liêm, Hà Nội</p>
-              <p><i class="fa fa-phone"></i> (024) 3562 5939 - (024) 3562 5940</p>
+              <p>Nay Y Khang</p>
+              <p><i class="fa fa-map-marker"></i> Phan Đình Giót, Phương Liệt, Thanh Xuân Hà Nội</p>
+              <p><i class="fa fa-phone"></i> 0964.945.381</p>
             </div>
             <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
               <h6 class="text-uppercase fw-bold mb-4">Hướng dẫn</h6>
@@ -48,7 +49,7 @@ function footer(){
           </div>
         </div>
       </section>
-
+      <ChatBot />
      </>
     );
 }

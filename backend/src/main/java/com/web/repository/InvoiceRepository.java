@@ -26,4 +26,7 @@ public interface InvoiceRepository extends JpaRepository<Invoice, Long> {
 
     @Query("select sum(i.totalAmount) from Invoice i where month(i.bookDate) = ?1 and year(i.bookDate) = ?2 and i.payStatus = ?3")
     Long tinhDoanhThuNam(int month, Integer nam, PayStatus payStatus);
+
+    @Query("select i from Invoice i where i.bookDate = ?1")
+    List<Invoice> findAllByBookingDate(Date bookingDate);
 }
